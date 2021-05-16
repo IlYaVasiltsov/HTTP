@@ -1,0 +1,43 @@
+<!-- <span>{{title}}</span> -->
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <mat-form-field class="example-full-width">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="filter" placeholder="Search post for title">
+      </mat-form-field>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-list class="list" *ngIf="postService.posts.length > 0 ; else empty">
+      <mat-list-item class="listItem" *ngFor="let post of postService.posts | postFilter:filter; let i = index">
+        <div class="items">
+          <div>
+            <span>{{i+1}}. {{post.title}}</span>
+          </div>
+          <div>
+            <span>
+              <button mat-stroked-button class="btn" (click)="Delete(post.id)">Delete</button>
+              <button mat-stroked-button class="btn" (click)="filterComment(post.id)" routerLink="/comment">View
+                comment</button>
+            </span>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <ng-template #empty>
+      <span>No posts yet</span>
+      <button mat-stroked-button (click)="Update()" >Load posts</button>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="postService.posts.length > 0" mat-stroked-button (click)="Update()" >Load</button>
+    <app-add-post></app-add-post>
+  </mat-card-actions>
+</mat-card>

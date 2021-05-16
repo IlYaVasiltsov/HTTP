@@ -1,0 +1,15 @@
+<div>
+  <!-- <input matInput type="text" [(ngModel)]="name"  placeholder="Add new  post...">
+  <input matInput type="text" [(ngModel)]="body" placeholder="Add new  body..."> -->
+<mat-form-field class="example-full-width">
+  <mat-label>Title</mat-label>
+    <input matInput type="text" [(ngModel)]="name" placeholder="Add new title">
+</mat-form-field>
+<!-- <mat-form-field class="example-full-width">
+  <mat-label>Body</mat-label>
+    <input matInput type="text" [(ngModel)]="body" placeholder="Add new  body">
+</mat-form-field> -->
+<br>
+  <button mat-stroked-button (click)="addPost()">Add post</button>
+</div>
+
